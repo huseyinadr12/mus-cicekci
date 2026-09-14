@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
+import { BLOG_POSTS } from "@/lib/constants";
+import { ArrowLeft,Calendar,Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock, User, Calendar, ArrowLeft, Sparkles } from "lucide-react";
-import { BLOG_POSTS } from "@/lib/constants";
+import { notFound } from "next/navigation";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;

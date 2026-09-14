@@ -1,15 +1,15 @@
-import Link from "next/link";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  ShieldCheck,
-  Truck,
-  HeartHandshake,
-  Award,
-} from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
+import {
+Award,
+Clock,
+HeartHandshake,
+Mail,
+MapPin,
+Phone,
+ShieldCheck,
+Truck,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -26,7 +26,7 @@ export default function Footer() {
                 Aynı Gün Teslimat
               </h4>
               <p className="text-[11px] text-[#A9B8A5]">
-                Muş içi siparişler 2-3 saatte kapıda
+                Muş içi aynı gün teslimat
               </p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function Footer() {
                 Taze Çiçek Garantisi
               </h4>
               <p className="text-[11px] text-[#A9B8A5]">
-                Hergün mezattan taze temin
+                Özenle seçilen taze çiçekler
               </p>
             </div>
           </div>
@@ -65,10 +65,10 @@ export default function Footer() {
             </div>
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
-                %100 Güvenli Ödeme
+                Kolay İletişim
               </h4>
               <p className="text-[11px] text-[#A9B8A5]">
-                256-Bit SSL & 3D Secure koruması
+                Telefon ve WhatsApp desteği
               </p>
             </div>
           </div>
@@ -212,7 +212,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[#A9B8A5]">
               <li>
                 <Link href="/teslimat#merkez" className="hover:text-white transition-colors">
-                  Muş Merkez (Ücretsiz)
+                  Muş Merkez
                 </Link>
               </li>
               <li>

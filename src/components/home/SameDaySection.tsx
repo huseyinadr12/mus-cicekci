@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { Sparkles, ArrowRight } from "lucide-react";
 import ProductCard from "@/components/commerce/ProductCard";
 import { Product } from "@/types";
+import { ArrowRight,Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface SameDaySectionProps {
   products: Product[];
 }
 
 export default function SameDaySection({ products }: SameDaySectionProps) {
-  const sameDayProducts = products.filter((p) => p.sameDayDelivery).slice(0, 6);
+  const sameDayProducts = products.filter((p) => p.sameDayDelivery && p.inStock && p.isFeatured).slice(0, 6);
 
   return (
     <section className="py-20 bg-[#F8F5EF] border-t border-[#A9B8A5]/20">

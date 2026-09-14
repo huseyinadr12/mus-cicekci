@@ -1,6 +1,6 @@
-import Link from "next/link";
+import { ArrowRight,Sparkles } from "lucide-react";
 import Image from "next/image";
-import { Sparkles, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function FinalClosingScene() {
   return (
@@ -52,15 +52,15 @@ export default function FinalClosingScene() {
           {/* Right Illuminated Bouquet Composition */}
           <div className="lg:col-span-5 relative aspect-square max-w-md mx-auto w-full rounded-3xl overflow-hidden shadow-2xl border border-[#365B45]/50 group">
             <Image
-              src="https://images.unsplash.com/photo-1548094891-c4969f667149?q=80&w=900&auto=format&fit=crop"
-              alt="Muş Çiçekçi Buket Sunumu"
+              src="/images/editorial/bouquet.webp"
+              alt="Bordo ve beyaz güllerle özgün buket kompozisyonu" sizes="(max-width: 1024px) 90vw, 40vw"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-center">
               <span className="text-xs text-white font-serif tracking-wider block">
-                Taşdemir Çiçekçilik Atölyesi • Muş
+                Her çiçeğin bir hikâyesi var.
               </span>
               <span className="text-[11px] text-[#A9B8A5] block mt-0.5">
                 Her gün 08:30 – 22:00

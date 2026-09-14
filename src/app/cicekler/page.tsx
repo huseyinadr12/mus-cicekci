@@ -1,8 +1,7 @@
-import { Suspense } from "react";
-import Link from "next/link";
-import { Sparkles, SlidersHorizontal, ArrowLeft } from "lucide-react";
 import ProductCard from "@/components/commerce/ProductCard";
 import { db } from "@/lib/db";
+import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface CatalogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -12,6 +11,12 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const resolvedParams = await searchParams;
   const categoryFilter = typeof resolvedParams.cat === "string" ? resolvedParams.cat : "";
   const deliveryFilter = typeof resolvedParams.delivery === "string" ? resolvedParams.delivery : "";
+  function filterUrl(category: string, delivery: string) {
+    const query = new URLSearchParams();
+    if (category) query.set("cat", category);
+    if (delivery) query.set("delivery", delivery);
+    return `/cicekler${query.size ? `?${query}` : ""}`;
+  }
 
   let products = await db.getProducts();
 
@@ -62,7 +67,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             return (
               <Link
                 key={cat.slug}
-                href={cat.slug ? `/cicekler?cat=${cat.slug}` : "/cicekler"}
+                href={filterUrl(cat.slug, deliveryFilter)}
+                aria-current={isActive ? "page" : undefined}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 ${
                   isActive
                     ? "bg-[#18392B] text-white shadow-xs"
@@ -75,7 +81,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
           })}
 
           <Link
-            href="/cicekler?delivery=same-day"
+            href={filterUrl(categoryFilter, deliveryFilter ? "" : "same-day")}
+            aria-current={deliveryFilter === "same-day" ? "page" : undefined}
             className={`ml-auto flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
               deliveryFilter === "same-day"
                 ? "bg-[#6F2232] text-white shadow-xs"
@@ -101,7 +108,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

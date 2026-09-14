@@ -1,28 +1,24 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import Image from "next/image";
-import {
-  Search,
-  CheckCircle2,
-  Clock,
-  Truck,
-  PackageCheck,
-  AlertCircle,
-  MessageCircle,
-  MapPin,
-  Calendar,
-} from "lucide-react";
-import { Order } from "@/types";
-import { formatPrice } from "@/lib/utils";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { Order } from "@/types";
+import {
+AlertCircle,
+Calendar,
+CheckCircle2,
+Clock,
+MapPin,
+MessageCircle
+} from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Suspense,useState } from "react";
 
 function OrderTrackingContent() {
   const searchParams = useSearchParams();
   const initialCode = searchParams.get("code") || "";
 
   const [searchCode, setSearchCode] = useState(initialCode);
+  const [phone, setPhone] = useState("");
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -33,7 +29,7 @@ function OrderTrackingContent() {
     setErrorMsg("");
     try {
       const res = await fetch(
-        `/api/orders?code=${encodeURIComponent(codeToSearch.trim())}`
+        `/api/orders?code=${encodeURIComponent(codeToSearch.trim())}&phone=${encodeURIComponent(phone)}`
       );
       const data = await res.json();
       if (res.ok && data.order) {
@@ -44,18 +40,13 @@ function OrderTrackingContent() {
         );
         setOrder(null);
       }
-    } catch (err) {
+    } catch {
       setErrorMsg("Sipariş sorgulanırken bir sunucu hatası oluştu.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (initialCode) {
-      handleLookup(initialCode);
-    }
-  }, [initialCode]);
 
   return (
     <div className="py-16 bg-[#F8F5EF] min-h-screen">
@@ -69,7 +60,7 @@ function OrderTrackingContent() {
             SİPARİŞİM NEREDE?
           </h1>
           <p className="mt-3 text-xs sm:text-sm text-[#575A53]">
-            Sipariş takip numaranızı veya sipariş verirken kullandığınız telefon numaranızı girerek anlık durumu görüntüleyin.
+            Sipariş numaranızı ve gönderici telefon numaranızı birlikte girin. Mevcut siteden verdiğiniz siparişler için WhatsApp hattımızdan destek alabilirsiniz.
           </p>
         </div>
 
@@ -79,15 +70,16 @@ function OrderTrackingContent() {
             e.preventDefault();
             handleLookup(searchCode);
           }}
-          className="max-w-xl mx-auto flex gap-2 bg-[#FFFDFC] p-2 rounded-full border border-[#A9B8A5]/40 shadow-sm mb-12"
+          className="max-w-xl mx-auto flex flex-col sm:flex-row gap-2 bg-[#FFFDFC] p-2 rounded-xl border border-[#A9B8A5]/40 shadow-sm mb-12"
         >
           <input
             type="text"
             value={searchCode}
             onChange={(e) => setSearchCode(e.target.value)}
-            placeholder="Örn: MUS-20491 veya 05XXXXXXXXX"
+            required aria-label="Sipariş numarası" placeholder="Sipariş numarası (MUS-…)"
             className="w-full text-xs sm:text-sm px-4 py-2 bg-transparent text-[#20221F] focus:outline-none"
           />
+          <input required type="tel" aria-label="Gönderici telefon numarası" placeholder="Gönderici telefonu" value={phone} onChange={event => setPhone(event.target.value)} className="w-full text-sm px-4 py-2 bg-transparent min-w-0" />
           <button
             type="submit"
             disabled={isLoading}

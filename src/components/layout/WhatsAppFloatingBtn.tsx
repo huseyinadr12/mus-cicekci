@@ -1,7 +1,7 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloatingBtn() {
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${BUSINESS_INFO.whatsapp}&text=${encodeURIComponent(

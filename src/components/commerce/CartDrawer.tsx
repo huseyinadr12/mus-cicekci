@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { X, Trash2, Plus, Minus, Truck, ArrowRight, Sparkles } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
+import { ArrowRight,Minus,Plus,Sparkles,Trash2,Truck,X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useDialogAccessibility } from "./useDialogAccessibility";
 
 export default function CartDrawer() {
   const {
@@ -17,6 +18,7 @@ export default function CartDrawer() {
   } = useCartStore();
 
   const subtotal = getSubtotal();
+  const dialogRef = useDialogAccessibility(isCartOpen, closeCart);
 
   if (!isCartOpen) return null;
 
@@ -29,7 +31,7 @@ export default function CartDrawer() {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#FFFDFC] shadow-2xl flex flex-col justify-between border-l border-[#A9B8A5]/30 animate-in slide-in-from-right duration-300">
+        <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Sepetiniz" tabIndex={-1} className="w-screen max-w-md bg-[#FFFDFC] shadow-2xl flex flex-col justify-between border-l border-[#A9B8A5]/30 animate-in slide-in-from-right duration-300">
           {/* Header */}
           <div className="p-5 border-b border-[#A9B8A5]/20 bg-[#F8F5EF] flex items-center justify-between">
             <div>
@@ -182,13 +184,13 @@ export default function CartDrawer() {
           {items.length > 0 && (
             <div className="p-5 border-t border-[#A9B8A5]/20 bg-[#F8F5EF] space-y-3">
               <div className="flex items-center justify-between text-xs text-[#575A53]">
-                <span>Muş İçi Standart Teslimat</span>
-                <span className="text-[#365B45] font-semibold">ÜCRETSİZ</span>
+                <span>Teslimat ücreti</span>
+                <span className="text-[#365B45] font-semibold">Sonraki adımda</span>
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="font-serif text-base font-bold text-[#20221F]">
-                  Genel Toplam:
+                  Ürünler Toplamı:
                 </span>
                 <span className="text-xl font-bold text-[#18392B]">
                   {formatPrice(subtotal)}
@@ -205,7 +207,7 @@ export default function CartDrawer() {
               </Link>
 
               <p className="text-[10px] text-center text-[#575A53]">
-                🔒 256-Bit SSL ve 3D Secure ile güvenli ödeme
+                Sipariş bilgilerini kontrol ederek devam edin.
               </p>
             </div>
           )}

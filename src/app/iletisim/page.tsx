@@ -1,7 +1,7 @@
 "use client";
 
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { Clock,Mail,MapPin,MessageCircle,Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (

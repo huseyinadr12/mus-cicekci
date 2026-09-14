@@ -1,7 +1,8 @@
-import { Star, ShieldCheck } from "lucide-react";
 import { CUSTOMER_REVIEWS } from "@/lib/constants";
+import { ShieldCheck,Star } from "lucide-react";
 
 export default function CustomerReviewsSection() {
+  if (CUSTOMER_REVIEWS.length === 0) return null;
   return (
     <section className="py-24 bg-[#FFFDFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

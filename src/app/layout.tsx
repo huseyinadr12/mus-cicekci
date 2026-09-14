@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import PageTransition from "@/components/animation/PageTransition";
 import CartDrawer from "@/components/commerce/CartDrawer";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import WhatsAppFloatingBtn from "@/components/layout/WhatsAppFloatingBtn";
+import type { Metadata } from "next";
+import { Cormorant_Garamond,Manrope } from "next/font/google";
+import { Suspense } from "react";
+import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
       "Muş'ta aynı gün teslim edilen, özenle hazırlanan taze çiçekler ve hediyeler.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+        url: "/images/editorial/bouquet.webp",
         width: 1200,
         height: 630,
         alt: "Muş Çiçekçi Taze Buketler",
@@ -76,8 +78,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${manrope.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#F8F5EF] text-[#20221F] font-sans selection:bg-[#6F2232] selection:text-white">
+        <a href="#main-content" className="skip-link">İçeriğe geç</a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1"><Suspense fallback={children}><PageTransition>{children}</PageTransition></Suspense></main>
         <Footer />
         <CartDrawer />
         <WhatsAppFloatingBtn />

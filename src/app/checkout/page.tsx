@@ -1,36 +1,26 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import confetti from "canvas-confetti";
-import {
-  Truck,
-  User,
-  Heart,
-  CreditCard,
-  CheckCircle2,
-  Lock,
-  ArrowRight,
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Sparkles,
-  ShieldCheck,
-  MessageCircle,
-} from "lucide-react";
+import { useState } from "react";
+
+import { BUSINESS_INFO,DELIVERY_SLOTS,DISTRICT_ZONES } from "@/lib/constants";
 import { useCartStore } from "@/lib/store";
-import { DISTRICT_ZONES, DELIVERY_SLOTS, BUSINESS_INFO } from "@/lib/constants";
 import {
-  formatPrice,
-  getTodayDateString,
-  getTomorrowDateString,
-  formatDateTurkish,
+formatDateTurkish,
+formatPrice,
+getTodayDateString,
+getTomorrowDateString,
 } from "@/lib/utils";
+import {
+ArrowLeft,
+ArrowRight,
+CheckCircle2,
+MessageCircle,
+ShieldCheck
+} from "lucide-react";
 
 export default function CheckoutPage() {
-  const router = useRouter();
   const { items, clearCart, getSubtotal } = useCartStore();
 
   const [step, setStep] = useState(1);
@@ -39,9 +29,9 @@ export default function CheckoutPage() {
 
   // Delivery Step Data
   const today = getTodayDateString();
-  const [deliveryDate, setDeliveryDate] = useState(today);
-  const [district, setDistrict] = useState(DISTRICT_ZONES[0].name);
-  const [timeSlot, setTimeSlot] = useState(DELIVERY_SLOTS[1].label);
+  const [deliveryDate, setDeliveryDate] = useState(items[0]?.deliveryDate || today);
+  const [district, setDistrict] = useState(DISTRICT_ZONES.find(d => d.name === items[0]?.deliveryDistrict || d.id === items[0]?.deliveryDistrict)?.name || DISTRICT_ZONES[0].name);
+  const [timeSlot, setTimeSlot] = useState(items[0]?.deliverySlot || DELIVERY_SLOTS[1].label);
 
   // Recipient Step Data
   const [recipientName, setRecipientName] = useState("");
@@ -66,13 +56,7 @@ export default function CheckoutPage() {
   const [senderEmail, setSenderEmail] = useState("");
 
   // Payment Step Data
-  const [paymentMethod, setPaymentMethod] = useState<"CREDIT_CARD" | "HAVALE_EFT">(
-    "CREDIT_CARD"
-  );
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardExpiry, setCardExpiry] = useState("");
-  const [cardCvv, setCardCvv] = useState("");
-  const [cardHolder, setCardHolder] = useState("");
+  const paymentMethod = "HAVALE_EFT";
 
   const subtotal = getSubtotal();
   const districtZone = DISTRICT_ZONES.find((d) => d.name === district);
@@ -139,12 +123,6 @@ export default function CheckoutPage() {
         setCompletedOrderNumber(data.orderNumber);
         setStep(6);
         clearCart();
-        confetti({
-          particleCount: 120,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ["#18392B", "#6F2232", "#E7B9A5", "#A9B8A5"],
-        });
       } else {
         alert(data.error || "Sipariş verilirken bir hata oluştu.");
       }
@@ -486,7 +464,7 @@ export default function CheckoutPage() {
                         Gönderici Bilgileri
                       </h3>
                       <p className="text-xs text-[#575A53]">
-                        Sipariş durumu ve teslimat SMS bildirimleri için bilgileriniz.
+                        Siparişinizle ilgili size ulaşabilmemiz için bilgileriniz.
                       </p>
                     </div>
 
@@ -533,124 +511,13 @@ export default function CheckoutPage() {
                   </div>
                 )}
 
-                {/* STEP 5: PAYMENT */}
-                {step === 5 && (
-                  <div className="space-y-5 animate-in fade-in duration-300">
-                    <div>
-                      <h3 className="font-serif text-2xl text-[#18392B] font-light">
-                        Güvenli Ödeme
-                      </h3>
-                      <p className="text-xs text-[#575A53]">
-                        256-Bit SSL ile şifrelenmiş güvenli ödeme ekranı.
-                      </p>
-                    </div>
-
-                    {/* Method Toggle */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setPaymentMethod("CREDIT_CARD")}
-                        className={`p-3.5 rounded-xl border text-xs font-bold cursor-pointer transition-all ${
-                          paymentMethod === "CREDIT_CARD"
-                            ? "border-[#18392B] bg-[#18392B] text-white"
-                            : "border-[#A9B8A5]/30 bg-[#F8F5EF] text-[#20221F]"
-                        }`}
-                      >
-                        Kredi / Banka Kartı (3D Secure)
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setPaymentMethod("HAVALE_EFT")}
-                        className={`p-3.5 rounded-xl border text-xs font-bold cursor-pointer transition-all ${
-                          paymentMethod === "HAVALE_EFT"
-                            ? "border-[#18392B] bg-[#18392B] text-white"
-                            : "border-[#A9B8A5]/30 bg-[#F8F5EF] text-[#20221F]"
-                        }`}
-                      >
-                        Havale / EFT
-                      </button>
-                    </div>
-
-                    {paymentMethod === "CREDIT_CARD" ? (
-                      <div className="space-y-3 p-4 rounded-xl bg-[#F8F5EF] border border-[#A9B8A5]/25">
-                        <div>
-                          <label className="text-[11px] font-semibold text-[#575A53] uppercase block mb-1">
-                            Kart Numarası
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={cardNumber}
-                            onChange={(e) => setCardNumber(e.target.value)}
-                            placeholder="4543 •••• •••• ••••"
-                            className="w-full text-xs p-2.5 rounded-lg border border-[#A9B8A5]/40 bg-white"
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-3">
-                          <div>
-                            <label className="text-[11px] font-semibold text-[#575A53] uppercase block mb-1">
-                              Son Kullanma Tarihi
-                            </label>
-                            <input
-                              type="text"
-                              required
-                              value={cardExpiry}
-                              onChange={(e) => setCardExpiry(e.target.value)}
-                              placeholder="AA/YY"
-                              className="w-full text-xs p-2.5 rounded-lg border border-[#A9B8A5]/40 bg-white"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="text-[11px] font-semibold text-[#575A53] uppercase block mb-1">
-                              CVV Güvenlik Kodu
-                            </label>
-                            <input
-                              type="password"
-                              required
-                              maxLength={3}
-                              value={cardCvv}
-                              onChange={(e) => setCardCvv(e.target.value)}
-                              placeholder="•••"
-                              className="w-full text-xs p-2.5 rounded-lg border border-[#A9B8A5]/40 bg-white"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="text-[11px] font-semibold text-[#575A53] uppercase block mb-1">
-                            Kart Üzerindeki İsim
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={cardHolder}
-                            onChange={(e) => setCardHolder(e.target.value)}
-                            placeholder="Kart Sahibi"
-                            className="w-full text-xs p-2.5 rounded-lg border border-[#A9B8A5]/40 bg-white"
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="p-4 rounded-xl bg-[#F8F5EF] border border-[#A9B8A5]/30 text-xs space-y-2">
-                        <span className="font-bold text-[#18392B] block">
-                          {BUSINESS_INFO.bankName}
-                        </span>
-                        <p className="text-[11px] text-[#575A53]">
-                          Hesap Sahibi: {BUSINESS_INFO.accountHolder}
-                        </p>
-                        <p className="font-mono text-xs font-bold text-[#6F2232]">
-                          IBAN: {BUSINESS_INFO.iban}
-                        </p>
-                        <p className="text-[10px] text-[#575A53]">
-                          * Siparişiniz verildikten sonra dekontu WhatsApp hattımıza iletebilirsiniz.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
+                {step === 5 && <div className="space-y-5">
+                  <span className="editorial-eyebrow text-burgundy">SON ADIM · SİPARİŞ</span>
+                  <h3 className="font-serif text-3xl text-forest">Siparişinizi birlikte tamamlayalım.</h3>
+                  <p className="text-sm text-charcoal-muted leading-relaxed">Bu yeni sitede online ödeme henüz açık değil. Kart bilgisi veya ödeme alınmaz. Sipariş ve teslimat uygunluğu için bize ulaşabilir ya da mevcut sitemizden sipariş verebilirsiniz.</p>
+                  <a className="editorial-button" href={`https://wa.me/${BUSINESS_INFO.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp ile iletişime geç ↗</a>
+                  <a className="editorial-text-link block w-fit" href="https://www.muscicekci.net/" target="_blank" rel="noopener noreferrer">Mevcut siteden sipariş ver ↗</a>
+                </div>}
 
                 {/* Step Navigation Buttons */}
                 <div className="pt-6 border-t border-[#A9B8A5]/25 flex items-center justify-between">
@@ -669,14 +536,14 @@ export default function CheckoutPage() {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || step === 5}
                     className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#18392B] hover:bg-[#365B45] text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-md transition-all cursor-pointer disabled:opacity-50"
                   >
                     <span>
                       {isSubmitting
                         ? "İşleniyor..."
                         : step === 5
-                        ? "Siparişi Onayla & Öde"
+                        ? "Online ödeme yakında"
                         : "Devam Et"}
                     </span>
                     <ArrowRight className="w-4 h-4" />
@@ -748,7 +615,7 @@ export default function CheckoutPage() {
                 <div>
                   <span className="font-bold block">Güvenli Sipariş</span>
                   <span className="text-[10px] text-[#575A53]">
-                    Verileriniz 256-Bit SSL şifreleme ile korunmaktadır.
+                    Bu sitede kart bilgileri istenmez ve ödeme alınmaz.
                   </span>
                 </div>
               </div>

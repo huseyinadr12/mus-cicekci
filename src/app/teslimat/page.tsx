@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { Truck, Clock, ShieldCheck, MapPin, CheckCircle2 } from "lucide-react";
-import { DISTRICT_ZONES, DELIVERY_SLOTS, BUSINESS_INFO } from "@/lib/constants";
+import { DELIVERY_SLOTS,DISTRICT_ZONES } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
+import { CheckCircle2,MapPin,Truck } from "lucide-react";
 
 export const metadata = {
   title: "Muş Aynı Gün Teslimat Şartları | Muş Çiçekçi",

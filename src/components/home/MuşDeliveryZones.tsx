@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Truck, Clock, MapPin, CheckCircle2 } from "lucide-react";
-import { DISTRICT_ZONES, DELIVERY_SLOTS } from "@/lib/constants";
+import { DELIVERY_SLOTS,DISTRICT_ZONES } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
+import { CheckCircle2,Clock,MapPin,Truck } from "lucide-react";
+import { useState } from "react";
 
 export default function MuşDeliveryZones() {
   const [selectedDistrict, setSelectedDistrict] = useState(DISTRICT_ZONES[0]);

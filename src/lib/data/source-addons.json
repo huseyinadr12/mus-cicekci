@@ -1,0 +1,82 @@
+[
+  {
+    "id": "source-card-1",
+    "name": "Seni Seviyorum",
+    "category": "card",
+    "price": 20,
+    "image": "/images/source/cards/d76b62e9010f648c39323a20de62e871.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-2",
+    "name": "İyiki Doğdun",
+    "category": "card",
+    "price": 20,
+    "image": "/images/source/cards/499217b0d46fb8f9fa48878bd14edfee.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-3",
+    "name": "Özür Dilerim",
+    "category": "card",
+    "price": 20,
+    "image": "/images/source/cards/0c63d052b73b867532f19e0a411ea303.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-4",
+    "name": "Hoş Geldin Bebek",
+    "category": "card",
+    "price": 20,
+    "image": "/images/source/cards/080f7cea5ec2ebff5ce3e93ee6f04027.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-5",
+    "name": "Yıldönümü",
+    "category": "card",
+    "price": 20,
+    "image": "/images/source/cards/6cf441ca6194751af02df2669ec2da4f.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-6",
+    "name": "Hediye1",
+    "category": "card",
+    "price": 200,
+    "image": "/images/source/cards/6cc7155e3a6de2a5c4442db5fbfbe5db.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-7",
+    "name": "Hediye 2",
+    "category": "card",
+    "price": 200,
+    "image": "/images/source/cards/388af2a87ae83ef9e2ba0f51994f335c.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-8",
+    "name": "Hediye 3",
+    "category": "card",
+    "price": 3500,
+    "image": "/images/source/cards/06e73830dcccf4be08881a98e71a7f11.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-9",
+    "name": "Hediye 4",
+    "category": "card",
+    "price": 320,
+    "image": "/images/source/cards/fb0e7f2365d0d59402ebff12e035b01e.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  },
+  {
+    "id": "source-card-10",
+    "name": "Hediye 5",
+    "category": "card",
+    "price": 300,
+    "image": "/images/source/cards/8eedfea4eddf8e5e2ec7bac4821b4b2e.jpg",
+    "description": "Kaynak sitedeki orijinal kart / hediye seçeneği."
+  }
+]

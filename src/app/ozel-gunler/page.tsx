@@ -1,6 +1,5 @@
-import Link from "next/link";
 import EmotionSelector from "@/components/home/EmotionSelector";
-import { EMOTION_OPTIONS } from "@/lib/constants";
+import Link from "next/link";
 
 export default function OccasionsPage() {
   return (

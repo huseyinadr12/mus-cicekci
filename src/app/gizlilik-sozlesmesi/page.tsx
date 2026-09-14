@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BUSINESS_INFO } from "@/lib/constants";
 
 export const metadata = {

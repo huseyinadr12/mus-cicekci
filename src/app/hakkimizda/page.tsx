@@ -1,7 +1,5 @@
+import { Award,Heart,ShieldCheck,Sparkles } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { Sparkles, Heart, Award, ShieldCheck, MapPin } from "lucide-react";
-import { BUSINESS_INFO } from "@/lib/constants";
 
 export const metadata = {
   title: "Hakkımızda | Muş Çiçekçi - Taşdemir Çiçekçilik",
@@ -39,9 +37,10 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="relative aspect-4/5 rounded-3xl overflow-hidden shadow-xl border border-[#A9B8A5]/30">
             <Image
-              src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=900&auto=format&fit=crop"
-              alt="Muş Çiçekçi Usta Eli"
+              src="/images/editorial/craft.webp"
+              alt="Buket hazırlama sürecini anlatan temsili editoryal görsel"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

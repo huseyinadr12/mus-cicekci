@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
 import ProductCard from "@/components/commerce/ProductCard";
 import { db } from "@/lib/db";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface OccasionPageProps {
   params: Promise<{ occasion: string }>;

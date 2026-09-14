@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas,useFrame } from "@react-three/fiber";
+import { useMemo,useRef } from "react";
 import * as THREE from "three";
 
 // Controlled procedural 3D Rose Flower with concentric velvety petals

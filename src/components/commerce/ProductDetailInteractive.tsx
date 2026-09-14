@@ -1,33 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import {
+ADD_ON_ITEMS,
+CARD_TEMPLATES,
+DELIVERY_SLOTS,
+DISTRICT_ZONES,
+} from "@/lib/constants";
+import { useCartStore } from "@/lib/store";
+import {
+formatDateTurkish,
+formatPrice,
+getTodayDateString,
+getTomorrowDateString,
+} from "@/lib/utils";
+import { AddOnItem,Product } from "@/types";
+import {
+ArrowRight,
+Check,
+Heart,
+Plus,
+ShieldCheck,
+Sparkles,
+Truck
+} from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {
-  Sparkles,
-  Truck,
-  Clock,
-  MapPin,
-  Heart,
-  ShieldCheck,
-  Check,
-  Plus,
-  ArrowRight,
-} from "lucide-react";
-import { Product, AddOnItem } from "@/types";
-import {
-  DISTRICT_ZONES,
-  DELIVERY_SLOTS,
-  CARD_TEMPLATES,
-  ADD_ON_ITEMS,
-} from "@/lib/constants";
-import {
-  formatPrice,
-  getTodayDateString,
-  getTomorrowDateString,
-  formatDateTurkish,
-} from "@/lib/utils";
-import { useCartStore } from "@/lib/store";
+import { useState } from "react";
 
 interface ProductDetailInteractiveProps {
   product: Product;
@@ -37,7 +35,7 @@ export default function ProductDetailInteractive({
   product,
 }: ProductDetailInteractiveProps) {
   const router = useRouter();
-  const { addItem } = useCartStore();
+  const { addItem, closeCart } = useCartStore();
 
   // Image Gallery
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -60,7 +58,7 @@ export default function ProductDetailInteractive({
   >([]);
 
   // Quantity
-  const [quantity, setQuantity] = useState(1);
+  const quantity = 1;
 
   const toggleAddOn = (addon: AddOnItem) => {
     setSelectedAddOns((prev) => {
@@ -104,6 +102,7 @@ export default function ProductDetailInteractive({
 
   const handleBuyNow = () => {
     handleAddToCart();
+    closeCart();
     router.push("/checkout");
   };
 
@@ -118,7 +117,8 @@ export default function ProductDetailInteractive({
             alt={product.name}
             fill
             priority
-            className="object-cover object-center transition-all duration-500"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-contain object-center bg-white transition-all duration-500"
           />
 
           {product.sameDayDelivery && (
@@ -445,7 +445,7 @@ export default function ProductDetailInteractive({
             <span>•</span>
             <span className="flex items-center gap-1">
               <Truck className="w-3.5 h-3.5 text-[#365B45]" />
-              Muş Merkez Ücretsiz Kurye
+              Muş Merkez Teslimatı
             </span>
           </div>
         </div>

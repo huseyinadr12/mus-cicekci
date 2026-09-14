@@ -1,9 +1,9 @@
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import Link from "next/link";
 import ProductDetailInteractive from "@/components/commerce/ProductDetailInteractive";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -45,7 +45,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": product.name,
-    "image": product.images,
+    "image": product.images.map((image) => new URL(image, "https://muscicekci.net").href),
     "description": product.description,
     "brand": {
       "@type": "Brand",
@@ -60,11 +60,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
       "itemCondition": "https://schema.org/NewCondition",
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": product.rating,
-      "reviewCount": product.reviewCount,
     },
   };
 

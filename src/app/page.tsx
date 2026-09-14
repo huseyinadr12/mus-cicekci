@@ -1,13 +1,15 @@
-import FloralHero3D from "@/components/three/FloralHero3D";
-import EmotionSelector from "@/components/home/EmotionSelector";
-import SameDaySection from "@/components/home/SameDaySection";
-import FlowerUniverse from "@/components/home/FlowerUniverse";
 import BouquetStory from "@/components/home/BouquetStory";
-import MuşDeliveryZones from "@/components/home/MuşDeliveryZones";
 import CustomerReviewsSection from "@/components/home/CustomerReviewsSection";
+import EmotionSelector from "@/components/home/EmotionSelector";
 import FinalClosingScene from "@/components/home/FinalClosingScene";
-import { db } from "@/lib/db";
+import FlowerUniverse from "@/components/home/FlowerUniverse";
+import MuşDeliveryZones from "@/components/home/MuşDeliveryZones";
+import RosePassage from "@/components/home/RosePassage";
+import SameDaySection from "@/components/home/SameDaySection";
+import FloralHero3D from "@/components/three/FloralHero3D";
+import SectionReveal from "@/components/animation/SectionReveal";
 import { BUSINESS_INFO } from "@/lib/constants";
+import { db } from "@/lib/db";
 
 export default async function HomePage() {
   const products = await db.getProducts();
@@ -18,7 +20,7 @@ export default async function HomePage() {
     "@type": "Florist",
     "name": BUSINESS_INFO.name,
     "legalName": BUSINESS_INFO.legalName,
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+    "image": "https://muscicekci.net/images/editorial/bouquet.webp",
     "@id": "https://muscicekci.net",
     "url": "https://muscicekci.net",
     "telephone": BUSINESS_INFO.phone,
@@ -62,25 +64,26 @@ export default async function HomePage() {
       <FloralHero3D />
 
       {/* 02: Emotion-Driven Selection: "NE SÖYLEMEK İSTİYORSUN?" */}
-      <EmotionSelector />
+      <SectionReveal><EmotionSelector /></SectionReveal>
 
       {/* 03: Same-Day Delivery Highlight: "BUGÜN GÖNDER" */}
-      <SameDaySection products={products} />
+      <SectionReveal><SameDaySection products={products} /></SectionReveal>
+      <RosePassage />
 
       {/* 04: Botanical Specimen Exhibition: "ÇİÇEKLERİN DÜNYASI" */}
-      <FlowerUniverse />
+      <SectionReveal><FlowerUniverse /></SectionReveal>
 
       {/* 05: Craftsmanship & Florist Journey: "BİR BUKET NASIL HAZIRLANIR?" */}
-      <BouquetStory />
+      <SectionReveal><BouquetStory /></SectionReveal>
 
       {/* 06: Local Geography: "MUŞ'TA AYNI GÜN TESLİMAT" & Districts */}
-      <MuşDeliveryZones />
+      <SectionReveal><MuşDeliveryZones /></SectionReveal>
 
       {/* 07: Real Testimonials: "BİNLERCE ANIN BİR PARÇASI." */}
       <CustomerReviewsSection />
 
       {/* 08: Final Emotional Closing Scene: "BAZEN BİR ÇİÇEK HER ŞEYİ SÖYLER." */}
-      <FinalClosingScene />
+      <SectionReveal><FinalClosingScene /></SectionReveal>
     </>
   );
 }

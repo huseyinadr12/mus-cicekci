@@ -1,5 +1,5 @@
+import { BLOG_POSTS,PRODUCTS_CATALOG } from "@/lib/constants";
 import { MetadataRoute } from "next";
-import { PRODUCTS_CATALOG, BLOG_POSTS } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://muscicekci.net";

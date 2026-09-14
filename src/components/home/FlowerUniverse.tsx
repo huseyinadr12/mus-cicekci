@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { ArrowRight,Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 const SPECIMENS = [
   {
@@ -15,7 +15,7 @@ const SPECIMENS = [
       "Yüzyıllardır duyguların en evrensel ve asil tercümanı. Kırmızı tutkuyu, beyaz masumiyeti ve yeni başlangıçları fısıldar.",
     categoryLink: "/cicekler/guller",
     image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
+      "/images/source/products/a0c32630537e602b9b27d8323247f2e2.jpg",
     careTip: "Saplarını 45 derecelik açıyla kesip serin yerde saklayın.",
   },
   {
@@ -27,7 +27,7 @@ const SPECIMENS = [
       "Haftalarca taze kalan narin çiçekleriyle mekânlara heykelsi bir lüks katar. Yeni iş ve özel kutlamaların prestij simgesidir.",
     categoryLink: "/cicekler/orkideler",
     image:
-      "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1000&auto=format&fit=crop",
+      "/images/source/products/ab22cb774bb490a3926a06b1996f2fbf.jpg",
     careTip: "Haftada bir kez daldırma sulama yapın, kökleri havalansın.",
   },
   {
@@ -39,7 +39,7 @@ const SPECIMENS = [
       "Güneş gibi açan canlı renkleriyle bulunduğu ortama anında yüksek enerji ve neşe aşılar. Doğum günlerinin vazgeçilmezidir.",
     categoryLink: "/cicekler/buketler",
     image:
-      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1000&auto=format&fit=crop",
+      "/images/source/products/1b8e355b4d35926fcaf3cfb06c889496.jpg",
     careTip: "Az su dolu temiz vazoda muhafaza ediniz.",
   },
   {
@@ -51,7 +51,7 @@ const SPECIMENS = [
       "Büyüleyici kokusu ve heybetli taç yapraklarıyla derin saygı ve kutlama anlarının en etkileyici temsilcisidir.",
     categoryLink: "/cicekler/buketler",
     image:
-      "https://images.unsplash.com/photo-1509223197845-458d87318791?q=80&w=1000&auto=format&fit=crop",
+      "/images/source/products/6d06556b48f0c1f4a526d0c269d711a9.jpg",
     careTip: "Açan çiçeklerin polenlerini nazikçe ayıklayınız.",
   },
 ];
@@ -82,6 +82,7 @@ export default function FlowerUniverse() {
               <button
                 key={item.id}
                 onClick={() => setSelectedSpecimen(item)}
+                aria-pressed={selectedSpecimen.id === item.id}
                 className={`px-5 py-2 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 ${
                   selectedSpecimen.id === item.id
                     ? "bg-[#F8F5EF] text-[#18392B] shadow-md scale-105"
@@ -102,7 +103,8 @@ export default function FlowerUniverse() {
               src={selectedSpecimen.image}
               alt={selectedSpecimen.name}
               fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              className="object-contain bg-white transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4">
@@ -130,7 +132,7 @@ export default function FlowerUniverse() {
 
             <div className="p-4 rounded-xl bg-[#18392B]/80 border border-[#365B45]/60 text-xs text-[#F8F5EF]">
               <span className="font-bold text-[#E7B9A5] block mb-1">
-                🌿 Çiçek Bakım Tavsiyesi:
+                Çiçek Bakım Tavsiyesi:
               </span>
               {selectedSpecimen.careTip}
             </div>
