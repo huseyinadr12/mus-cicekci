@@ -1,5 +1,5 @@
 import { Award,Heart,ShieldCheck,Sparkles } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 
 export const metadata = {
   title: "Hakkımızda | Muş Çiçekçi - Taşdemir Çiçekçilik",

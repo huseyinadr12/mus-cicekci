@@ -125,7 +125,7 @@ button:not(:disabled) { cursor: pointer; }
 .craft-steps h3 { font-size: 13px; font-weight: 600; color: var(--color-forest); }
 .craft-steps p { color: var(--color-charcoal-muted); font-size: 12px; line-height: 1.9; margin-top: 6px; }
 .craft-copy > a { margin-top: 23px; }
-.route-petal-veil { position: fixed; inset: 0; z-index: 35; pointer-events: none; opacity: 0; background: var(--color-burgundy) url('/images/editorial/rose.webp') center / cover; }
+.route-petal-veil { position: fixed; inset: 0; z-index: 35; pointer-events: none; opacity: 0; background: var(--color-burgundy); background-position: center; background-size: cover; }
 .route-scene { animation: route-enter .5s cubic-bezier(.22,1,.36,1) both; }
 @keyframes route-enter { from { opacity: .35; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
 .route-loading { min-height: 58vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px; text-align: center; color: var(--color-forest); }

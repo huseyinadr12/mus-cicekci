@@ -3,7 +3,7 @@ import { PRODUCTS_CATALOG } from "@/lib/catalog";
 import { searchCatalog } from "@/lib/search";
 import { formatPrice } from "@/lib/utils";
 import { ArrowUpRight,Search,X } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 import { useMemo,useState } from "react";
 import { useDialogAccessibility } from "./useDialogAccessibility";

@@ -1,6 +1,6 @@
 import { BLOG_POSTS } from "@/lib/constants";
 import { ArrowLeft,Calendar,Clock } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -109,3 +109,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </article>
   );
 }
+
+export function generateStaticParams() { return BLOG_POSTS.map(({ slug }) => ({ slug })); }

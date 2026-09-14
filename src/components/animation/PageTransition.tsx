@@ -1,5 +1,6 @@
 "use client";
 import { usePathname,useSearchParams } from "next/navigation";
+import { assetUrl } from "@/lib/deployment";
 import { useEffect,useRef } from "react";
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
@@ -20,5 +21,5 @@ export default function PageTransition({ children }: { children: React.ReactNode
     ], { duration: 620, easing: "cubic-bezier(.22,1,.36,1)" });
     return () => animation?.cancel();
   }, [routeKey]);
-  return <><div key={routeKey} className="route-scene">{children}</div><div ref={veil} className="route-petal-veil" aria-hidden="true" /></>;
+  return <><div key={routeKey} className="route-scene">{children}</div><div ref={veil} className="route-petal-veil" style={{ backgroundImage: `url("${assetUrl("/images/editorial/rose.webp")}")` }} aria-hidden="true" /></>;
 }

@@ -1,5 +1,5 @@
 import { ArrowRight,Sparkles } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 
 export default function FinalClosingScene() {

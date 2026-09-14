@@ -3,7 +3,7 @@ import { useCartStore } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
 import { Product } from "@/types";
 import { ArrowUpRight,Plus } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 
 export default function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {

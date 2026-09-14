@@ -1,6 +1,6 @@
 import { EMOTION_OPTIONS } from "@/lib/constants";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 
 const names = ["Seni seviyorum", "İyi ki doğdun", "Bir ömür mutluluk", "Geçmiş olsun", "Hoş geldin", "Yanındayım"];

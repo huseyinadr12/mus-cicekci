@@ -92,3 +92,5 @@ export default async function ProductPage({ params }: ProductPageProps) {
     </div>
   );
 }
+
+export async function generateStaticParams() { return (await db.getProducts()).map(({ slug }) => ({ slug })); }

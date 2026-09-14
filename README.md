@@ -2,6 +2,14 @@
 
 Taşdemir Çiçekçilik için geliştirilen, Next.js tabanlı çiçek kataloğu ve e-ticaret arayüzü.
 
+## Web önizlemesi
+
+[GitHub Pages demosunu aç](https://huseyinadr12.github.io/mus-cicekci/)
+
+Pages sürümü yalnızca tasarım önizlemesidir; gerçek sipariş, ödeme, kişisel bilgi toplama ve yönetici girişi içermez. `master` dalına gönderilen değişiklikler GitHub Actions üzerinden otomatik yayınlanır. Normal Next.js geliştirme sürümü korunur.
+
+Statik derleme: `npm run build:pages`. Çıktı: `tmp/pages-build/out`. Kontrol: `node scripts/verify-pages.mjs`.
+
 ## Özellikler
 
 - 48 ürün, 10 ek ürün/kart ve yerel olarak saklanan 120 kaynak görsel.

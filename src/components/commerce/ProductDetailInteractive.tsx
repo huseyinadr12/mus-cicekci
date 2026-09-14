@@ -23,7 +23,7 @@ ShieldCheck,
 Sparkles,
 Truck
 } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 

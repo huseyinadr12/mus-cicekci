@@ -1,7 +1,7 @@
 "use client";
 import { EDITORIAL } from "@/lib/catalog";
 import { motion,useReducedMotion,useScroll,useTransform } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import { useRef } from "react";
 
 export default function RosePassage() {

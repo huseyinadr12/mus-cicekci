@@ -99,3 +99,5 @@ export default async function OccasionPage({ params }: OccasionPageProps) {
     </div>
   );
 }
+
+export function generateStaticParams() { return Object.keys(OCCASION_TITLES).map(occasion => ({ occasion })); }

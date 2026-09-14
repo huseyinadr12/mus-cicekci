@@ -106,3 +106,5 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     </div>
   );
 }
+
+export function generateStaticParams() { return Object.keys(CATEGORY_MAP).map(category => ({ category })); }

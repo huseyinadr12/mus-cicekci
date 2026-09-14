@@ -1,6 +1,6 @@
 "use client";
 import { motion,useMotionValue,useReducedMotion,useSpring } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import type { PointerEvent } from "react";
 
 export default function DepthImage({ src, alt, className = "", priority = false, contain = false }: {

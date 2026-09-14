@@ -1,3 +1,4 @@
+import { IS_PAGES_DEMO } from "@/lib/deployment";
 import PageTransition from "@/components/animation/PageTransition";
 import CartDrawer from "@/components/commerce/CartDrawer";
 import Footer from "@/components/layout/Footer";
@@ -62,8 +63,8 @@ export const metadata: Metadata = {
     ],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: !IS_PAGES_DEMO,
+    follow: !IS_PAGES_DEMO,
   },
 };
 
@@ -79,11 +80,12 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#F8F5EF] text-[#20221F] font-sans selection:bg-[#6F2232] selection:text-white">
         <a href="#main-content" className="skip-link">İçeriğe geç</a>
+        {IS_PAGES_DEMO && <aside className="bg-[#6F2232] text-white text-center px-4 py-2 text-xs">Tasarım demosu · Resmî satış sitesi değildir. Sipariş ve ödeme alınmaz.</aside>}
         <Header />
         <main id="main-content" className="flex-1"><Suspense fallback={children}><PageTransition>{children}</PageTransition></Suspense></main>
         <Footer />
         <CartDrawer />
-        <WhatsAppFloatingBtn />
+        {!IS_PAGES_DEMO && <WhatsAppFloatingBtn />}
       </body>
     </html>
   );

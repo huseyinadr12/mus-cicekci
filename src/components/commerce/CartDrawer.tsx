@@ -3,7 +3,7 @@
 import { useCartStore } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
 import { ArrowRight,Minus,Plus,Sparkles,Trash2,Truck,X } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/StoreImage";
 import Link from "next/link";
 import { useDialogAccessibility } from "./useDialogAccessibility";
 
