@@ -1,5 +1,6 @@
 import { IS_PAGES_DEMO } from "@/lib/deployment";
 import PageTransition from "@/components/animation/PageTransition";
+import OpeningScene from "@/components/animation/OpeningScene";
 import CartDrawer from "@/components/commerce/CartDrawer";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -26,8 +27,8 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://muscicekci.net"),
   title: {
-    default: "Muş Çiçekçi | Taşdemir Çiçekçilik - Muş'ta Aynı Gün Çiçek Siparişi",
-    template: "%s | Muş Çiçekçi",
+    default: "Taşdemir — Çiçek Atölyesi | Muş",
+    template: "%s | Taşdemir",
   },
   description:
     "Muş çiçek siparişi. Taşdemir Çiçekçilik güvencesiyle Muş Merkez ve ilçelerine aynı gün teslimat taze kırmızı güller, orkideler, doğum günü buketleri ve çelenkler.",
@@ -44,13 +45,13 @@ export const metadata: Metadata = {
     "Muş düğün çiçeği",
   ],
   authors: [{ name: "Taşdemir Çiçekçilik" }],
-  creator: "Muş Çiçekçi",
+  creator: "Taşdemir Çiçek Atölyesi",
   openGraph: {
     type: "website",
     locale: "tr_TR",
     url: "https://muscicekci.net",
-    siteName: "Muş Çiçekçi",
-    title: "Muş Çiçekçi | Her Çiçeğin Bir Hikâyesi Var",
+    siteName: "Taşdemir Çiçek Atölyesi",
+    title: "Taşdemir — Duygulara biçim veriyoruz.",
     description:
       "Muş'ta aynı gün teslim edilen, özenle hazırlanan taze çiçekler ve hediyeler.",
     images: [
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
         url: "/images/editorial/bouquet.webp",
         width: 1200,
         height: 630,
-        alt: "Muş Çiçekçi Taze Buketler",
+        alt: "Taşdemir Çiçek Atölyesi — Buket seçkisi",
       },
     ],
   },
@@ -80,6 +81,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#F8F5EF] text-[#20221F] font-sans selection:bg-[#6F2232] selection:text-white">
         <a href="#main-content" className="skip-link">İçeriğe geç</a>
+        <OpeningScene />
         {IS_PAGES_DEMO && <aside className="bg-[#6F2232] text-white text-center px-4 py-2 text-xs">Tasarım demosu · Resmî satış sitesi değildir. Sipariş ve ödeme alınmaz.</aside>}
         <Header />
         <main id="main-content" className="flex-1"><Suspense fallback={children}><PageTransition>{children}</PageTransition></Suspense></main>

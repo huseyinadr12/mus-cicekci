@@ -1,4 +1,5 @@
 "use client";
+import BrandSignature from "@/components/BrandSignature";
 import SearchModal from "@/components/commerce/SearchModal";
 import { BUSINESS_INFO } from "@/lib/constants";
 import { useCartStore } from "@/lib/store";
@@ -34,7 +35,7 @@ function HeaderContent() {
     <div className="store-topbar"><span>Muş&apos;tan sevdiklerinize, aynı gün.</span><div><Link href="/siparis-takip">Siparişimi takip et</Link><a className="topbar-phone" href={`tel:${BUSINESS_INFO.phone.replaceAll(' ', '')}`}><Phone size={11} />{BUSINESS_INFO.phone}</a></div></div>
     <header className="store-header">
       <div className="store-header-inner">
-        <Link href="/" aria-label="Muş Çiçekçi ana sayfa" className="store-wordmark">muş çiçekçi<span>TAŞDEMİR ÇİÇEKÇİLİK</span></Link>
+        <Link href="/" aria-label="Taşdemir Çiçek Atölyesi ana sayfa" className="store-wordmark"><BrandSignature /></Link>
         <nav ref={nav} className="desktop-nav" aria-label="Ana gezinme">
           {[["Çiçekler", flowers], ["Özel günler", occasions]].map(([label, links]) => <details key={label as string} className="nav-dropdown"><summary>{label as string}<ChevronDown size={12} /></summary><div className="nav-dropdown-panel">{(links as string[][]).map(([name, href]) => <Link key={href} href={href}>{name}<ArrowUpRight size={12} /></Link>)}</div></details>)}
           <Link href="/cicekler?delivery=same-day">Bugün teslim</Link><Link href="/hakkimizda">Hikâyemiz</Link><Link href="/iletisim">İletişim</Link>

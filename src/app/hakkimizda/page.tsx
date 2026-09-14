@@ -2,7 +2,7 @@ import { Award,Heart,ShieldCheck,Sparkles } from "lucide-react";
 import Image from "@/components/StoreImage";
 
 export const metadata = {
-  title: "Hakkımızda | Muş Çiçekçi - Taşdemir Çiçekçilik",
+  title: "Hakkımızda | Taşdemir Çiçek Atölyesi - Taşdemir Çiçekçilik",
   description:
     "2017'den beri Muş'ta duyguları taze çiçeklerle buluşturan Taşdemir Çiçekçilik'in hikâyesi, değerleri ve zanaat anlayışı.",
 };

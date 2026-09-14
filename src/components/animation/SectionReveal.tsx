@@ -11,9 +11,9 @@ export default function SectionReveal({ children }: { children: React.ReactNode 
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       animation = element.animate([
-        { opacity: 0.45, transform: "translateY(22px)" },
+        { opacity: 0.45, transform: "translateY(32px)" },
         { opacity: 1, transform: "translateY(0)" },
-      ], { duration: 700, easing: "cubic-bezier(.22,1,.36,1)" });
+      ], { duration: 1100, easing: "cubic-bezier(.22,1,.36,1)" });
       observer.disconnect();
     }, { threshold: 0.08 });
     observer.observe(element);

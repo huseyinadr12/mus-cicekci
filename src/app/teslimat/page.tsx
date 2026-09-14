@@ -3,7 +3,7 @@ import { formatPrice } from "@/lib/utils";
 import { CheckCircle2,MapPin,Truck } from "lucide-react";
 
 export const metadata = {
-  title: "Muş Aynı Gün Teslimat Şartları | Muş Çiçekçi",
+  title: "Muş Aynı Gün Teslimat Şartları | Taşdemir Çiçek Atölyesi",
   description:
     "Muş Merkez ve Hasköy, Korkut, Bulanık, Malazgirt, Varto ilçelerine aynı gün çiçek teslimatı saatleri, ücretleri ve kurye kuralları.",
 };
@@ -16,7 +16,7 @@ export default function DeliveryPage() {
         <div className="text-center max-w-2xl mx-auto">
           <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#18392B] flex items-center justify-center gap-1.5">
             <Truck className="w-3.5 h-3.5 text-[#365B45]" />
-            Muş Çiçekçi Lojistiği
+            Taşdemir Çiçek Atölyesi Lojistiği
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-light text-[#18392B] mt-2">
             MUŞ&apos;TA AYNI GÜN TESLİMAT

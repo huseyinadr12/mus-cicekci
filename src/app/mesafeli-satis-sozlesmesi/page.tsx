@@ -1,7 +1,7 @@
 import { BUSINESS_INFO } from "@/lib/constants";
 
 export const metadata = {
-  title: "Mesafeli Satış Sözleşmesi | Muş Çiçekçi",
+  title: "Mesafeli Satış Sözleşmesi | Taşdemir Çiçek Atölyesi",
 };
 
 export default function DistanceSellingContractPage() {

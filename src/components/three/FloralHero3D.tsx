@@ -7,11 +7,11 @@ import Link from "next/link";
 export default function FloralHero3D() {
   return <section className="floral-hero" aria-labelledby="hero-title">
     <div className="hero-copy">
-      <span className="editorial-eyebrow"><span className="small-rule" /> MUŞ ÇİÇEKÇİ · TAŞDEMİR ÇİÇEKÇİLİK</span>
-      <h1 id="hero-title">Her duygu<br />bir <em>çiçek</em> bulur.</h1>
-      <p>Söylemek istediğin ne varsa, bir çiçekle başlasın. Muş&apos;ta özenle hazırlanan buketler, sevdiklerinin kapısında.</p>
+      <span className="editorial-eyebrow"><span className="small-rule" /> TAŞDEMİR SEÇKİSİ · MUŞ</span>
+      <h1 id="hero-title">Duygulara<br /><em>biçim</em> veriyoruz.</h1>
+      <p>Rengiyle, dokusuyla, kokusuyla. Söylemek istediğiniz her şey, atölyemizde size özel bir çiçeğe dönüşür.</p>
       <div className="hero-actions">
-        <Link href="/cicekler" className="editorial-button">Çiçekleri keşfet <ArrowUpRight size={17} /></Link>
+        <Link href="/cicekler" className="editorial-button">Seçkiyi keşfet <ArrowUpRight size={17} /></Link>
         <Link href="/cicekler?delivery=same-day" className="editorial-text-link">Bugün gönder <span>↗</span></Link>
       </div>
       <div className="hero-location"><MapPin size={15} /><span>Muş&apos;tan, sevgiyle.<br /><strong>Aynı gün teslimat</strong></span></div>

@@ -17,7 +17,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Çiçek Bulunamadı | Muş Çiçekçi",
+      title: "Çiçek Bulunamadı | Taşdemir Çiçek Atölyesi",
     };
   }
 
@@ -25,7 +25,7 @@ export async function generateMetadata({
     title: `${product.name} | Muş Çiçek Siparişi`,
     description: `${product.name} - ${formatPrice(product.price)}. Muş içi aynı gün teslimat garantisiyle Taşdemir Çiçekçilik'ten sipariş verin.`,
     openGraph: {
-      title: `${product.name} | Muş Çiçekçi`,
+      title: `${product.name} | Taşdemir Çiçek Atölyesi`,
       description: product.description,
       images: [{ url: product.images[0] }],
     },
@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     "description": product.description,
     "brand": {
       "@type": "Brand",
-      "name": "Muş Çiçekçi - Taşdemir Çiçekçilik",
+      "name": "Taşdemir Çiçek Atölyesi - Taşdemir Çiçekçilik",
     },
     "offers": {
       "@type": "Offer",

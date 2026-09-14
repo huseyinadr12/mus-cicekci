@@ -1,3 +1,4 @@
+import BrandSignature from "@/components/BrandSignature";
 import { BUSINESS_INFO } from "@/lib/constants";
 import {
 Award,
@@ -79,11 +80,9 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <span className="font-serif text-2xl tracking-wider text-white font-medium">
-                MUŞ ÇİÇEKÇİ
-              </span>
+              <BrandSignature />
               <p className="text-[10px] text-[#E7B9A5] tracking-[0.2em] uppercase font-semibold mt-0.5">
-                Taşdemir Çiçekçilik • Muş
+                Muş’ta kök salan bir çiçek atölyesi.
               </p>
             </div>
             <p className="text-[#A9B8A5] leading-relaxed max-w-sm">
@@ -252,7 +251,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] text-[#A9B8A5] gap-4">
           <p>
-            © {new Date().getFullYear()} Muş Çiçekçi - Taşdemir Çiçekçilik. Tüm hakları saklıdır.
+            © {new Date().getFullYear()} Taşdemir Çiçek Atölyesi. Tüm hakları saklıdır.
           </p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <Link href="/hakkimizda" className="hover:text-white transition-colors">

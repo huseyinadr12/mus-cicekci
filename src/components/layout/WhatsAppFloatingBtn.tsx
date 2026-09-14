@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloatingBtn() {
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${BUSINESS_INFO.whatsapp}&text=${encodeURIComponent(
-    "Merhaba Muş Çiçekçi, siparişim / çiçek çeşitleri hakkında bilgi almak istiyorum."
+    "Merhaba Taşdemir Çiçek Atölyesi, siparişim / çiçek çeşitleri hakkında bilgi almak istiyorum."
   )}`;
 
   return (
@@ -21,7 +21,7 @@ export default function WhatsAppFloatingBtn() {
           <MessageCircle className="w-4 h-4 fill-white" />
         </div>
         <span className="text-xs font-semibold tracking-wide hidden sm:inline-block pr-1">
-          Muş Çiçekçi Canlı Destek
+          Taşdemir Çiçek Atölyesi Canlı Destek
         </span>
       </a>
     </aside>

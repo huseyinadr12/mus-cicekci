@@ -1,7 +1,7 @@
 import { BUSINESS_INFO } from "@/lib/constants";
 
 export const metadata = {
-  title: "Gizlilik ve Güvenlik İlkeleri | Muş Çiçekçi",
+  title: "Gizlilik ve Güvenlik İlkeleri | Taşdemir Çiçek Atölyesi",
 };
 
 export default function PrivacyPolicyPage() {

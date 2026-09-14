@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
-    return { title: "Yazı Bulunamadı | Muş Çiçekçi" };
+    return { title: "Yazı Bulunamadı | Taşdemir Çiçek Atölyesi" };
   }
 
   return {
-    title: `${post.title} | Muş Çiçekçi Blog`,
+    title: `${post.title} | Taşdemir Çiçek Atölyesi Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,

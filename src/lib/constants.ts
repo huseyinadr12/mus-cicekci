@@ -7,7 +7,7 @@ EmotionOption,
 } from "@/types";
 
 export const BUSINESS_INFO = {
-  name: "Muş Çiçekçi",
+  name: "Taşdemir Çiçek Atölyesi",
   legalName: "Taşdemir Çiçekçilik",
   foundingYear: 2017,
   tagline: "Her Çiçeğin Bir Hikâyesi Var",
